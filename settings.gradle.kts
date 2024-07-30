@@ -21,6 +21,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "HyperRingPlatform-M1"
+rootProject.name = "HyperRing App for FIDO 2"
 include(":sdkCore")
 include(":app")

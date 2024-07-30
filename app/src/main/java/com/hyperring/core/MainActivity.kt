@@ -100,15 +100,121 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Column {
-                        NFCBox(context = LocalContext.current, viewModel = mainViewModel)
+                        //NFCBox(context = LocalContext.current, viewModel = mainViewModel)
                         // MFABox()
-                        HyperRingIDBox(context = LocalContext.current, viewModel = mainViewModel)
+                        //HyperRingIDBox(context = LocalContext.current, viewModel = mainViewModel)
+                        HyperRingFIDO2(context = LocalContext.current, viewModel = mainViewModel)
+                        InstagramBox(context = LocalContext.current, viewModel = mainViewModel)
                     }
+                }
+            }
+            
+        }
+    }
+}
+
+@Composable
+fun InstagramBox(context: Context, modifier: Modifier = Modifier, viewModel: MainViewModel) {
+    Column(modifier = modifier.padding(10.dp)) {
+        Box(modifier = modifier
+            .background(Color.LightGray)
+            .padding(10.dp)
+            .fillMaxWidth()
+            .height((250.dp))) {
+            Column(
+                modifier = modifier
+                    .align(Alignment.TopCenter)
+            ) {
+                Box(modifier = modifier
+                    .fillMaxWidth()
+                    .height(40.dp)
+                ) {
+                    Text(
+                        text = "Instagram Interface",
+                        modifier = modifier.fillMaxWidth(),
+                        style = TextStyle(fontSize = 22.sp),
+                        textAlign = TextAlign.Center,
+                    )
+                }
+                FilledTonalButton(
+                    modifier = modifier.fillMaxWidth(),
+                    onClick = {
+                        requestHyperRingIDIssuangeDialog(context, autoDismiss=true)
+                    }) {
+                    Text("Get Access Token", textAlign = TextAlign.Center)
+                }
+                FilledTonalButton(
+                    modifier = modifier.fillMaxWidth(),
+                    onClick = {
+                        requestMFADialog(autoDismiss=true)
+                    }) {
+                    Text("Fetch Media", textAlign = TextAlign.Center)
                 }
             }
         }
     }
 }
+
+@Composable
+fun HyperRingFIDO2(context: Context, modifier: Modifier = Modifier, viewModel: MainViewModel) {
+    Column(modifier = modifier.padding(10.dp)) {
+        Box(modifier = modifier
+            .background(Color.LightGray)
+            .padding(10.dp)
+            .fillMaxWidth()
+            .height((250.dp))) {
+            Column(
+                modifier = modifier
+                    .align(Alignment.TopCenter)
+            ) {
+                Box(modifier = modifier
+                    .fillMaxWidth()
+                    .height(40.dp)
+                ) {
+                    Text(
+                        text = "HyperRing FIDO 2 Menu",
+                        modifier = modifier.fillMaxWidth(),
+                        style = TextStyle(fontSize = 22.sp),
+                        textAlign = TextAlign.Center,
+                    )
+                }
+                Box(modifier = modifier
+                    .fillMaxWidth()
+                    .height(60.dp)
+                ) {
+                    Text(
+                        text = "HyperRing Authenticator Registration and Authentication",
+                        modifier = modifier.fillMaxWidth(),
+                        style = TextStyle(fontSize = 15.sp),
+                        textAlign = TextAlign.Center,
+                    )
+                }
+                FilledTonalButton(
+                    modifier = modifier.fillMaxWidth(),
+                    onClick = {
+                        requestHyperRingIDIssuangeDialog(context, autoDismiss=true)
+                    }) {
+                    Text("HyperRing Registration", textAlign = TextAlign.Center)
+                }
+                FilledTonalButton(
+                    modifier = modifier.fillMaxWidth(),
+                    onClick = {
+                        requestMFADialog(autoDismiss=true)
+                    }) {
+                    Text("HyperRing Authentication Request", textAlign = TextAlign.Center)
+                }
+                FilledTonalButton(
+                    modifier = modifier.fillMaxWidth(),
+                    onClick = {
+                        requestMFADialog(autoDismiss=true)
+                    }) {
+                    Text("HyperRing Authentication Response", textAlign = TextAlign.Center)
+                }
+            }
+        }
+    }
+}
+
 
 @Composable
 fun HyperRingIDBox(context: Context, modifier: Modifier = Modifier, viewModel: MainViewModel) {
